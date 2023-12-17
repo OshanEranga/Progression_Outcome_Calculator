@@ -38,7 +38,7 @@ The program reads and writes data to a file (`data.txt`). It stores each set of 
 
 The program provides a graphical histogram of the distribution of progression outcomes. The bars represent the counts of different outcomes, and the total is displayed for reference.
 
-**Note:** The graphical part of the program requires the `graphics` module, and a window will pop up to display the histogram.
+**Note:** The graphical part of the program requires the `graphics` module, and a window will pop up to display the histogram.Graphics Reference (graphics.py v5) - https://mcsp.wartburg.edu/zelle/python/graphics/graphics.pdf 
 
 Feel free to contribute, report issues, or suggest improvements!
 
