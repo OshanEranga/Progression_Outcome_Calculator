@@ -130,99 +130,52 @@ def loop_checker(data:list) ->bool:
             print("Invalid input.Try again.")
             continue
 
-#Show histrogram
+#Show histrogram 
 def show_histrogram(bar1_count:int,bar2_count:int,bar3_count:int,bar4_count:int,names_of_bars:list):
     total_count = bar1_count + bar2_count + bar3_count + bar4_count
+    each_count_list = [bar1_count,bar2_count,bar3_count,bar4_count]
+    colours_of_bars = [color_rgb(51,255,51),color_rgb(102,51,0),color_rgb(255,0,0),color_rgb(96,96,96)]
     try:
-        #window customize
+        #create and customize the window
         window = GraphWin("Histrogram",770,600)
         window.setBackground(color_rgb(192,192,192))
         
-        #Bar1 customize
-        bar1 = Rectangle(Point(100,475),Point(220,475 - (bar1_count*15)))
-        bar1.setFill(color_rgb(51,255,51))
-        bar1.draw(window)
+        #create and customize the bars
+        bar_x_position = 100
+        text_x_position = 160
+        bar_count = 0
+        for bar_name in names_of_bars:
+            bar = Rectangle(Point(bar_x_position,475),Point((bar_x_position+120),475 - (each_count_list[bar_count]*15)))
+            bar.setFill(colours_of_bars[bar_count])
+            bar.draw(window)
 
-        text1_bar1 = Text(Point(160,490),names_of_bars[0])
-        text1_bar1.setTextColor("blue")
-        text1_bar1.setStyle("bold")
-        text1_bar1.setFace("arial")
-        text1_bar1.setSize(18)
-        text1_bar1.draw(window)
+            text1_bar = Text(Point(text_x_position,490),bar_name)
+            text1_bar.setTextColor("blue")
+            text1_bar.setStyle("bold")
+            text1_bar.setFace("arial")
+            text1_bar.setSize(18)
+            text1_bar.draw(window)
 
-        text2_bar1 = Text(Point(160,460 - (bar1_count*15)),str(bar1_count))
-        text2_bar1.setTextColor("blue")
-        text2_bar1.setStyle("bold")
-        text2_bar1.setFace("arial")
-        text2_bar1.setSize(18)
-        text2_bar1.draw(window)
+            text2_bar = Text(Point(text_x_position,460 - (each_count_list[bar_count]*15)), str(each_count_list[bar_count]))
+            text2_bar.setTextColor("blue")
+            text2_bar.setStyle("bold")
+            text2_bar.setFace("arial")
+            text2_bar.setSize(18)
+            text2_bar.draw(window)
 
-        #Bar2 customize
-        bar2 = Rectangle(Point(250,475),Point(370,475 -(bar2_count*15)))
-        bar2.setFill(color_rgb(102,51,0))
-        bar2.draw(window)
+            bar_count += 1
+            text_x_position += 150
+            bar_x_position += 150
 
-        text1_bar2 = Text(Point(310,490),names_of_bars[1])
-        text1_bar2.setTextColor("blue")
-        text1_bar2.setStyle("bold")
-        text1_bar2.setFace("arial")
-        text1_bar2.setSize(18)
-        text1_bar2.draw(window)
+        #create and customize the title
+        title_text = Text(Point(240,50),"Histrogram Results")
+        title_text.setTextColor("black")
+        title_text.setStyle("bold")
+        title_text.setFace("arial")
+        title_text.setSize(25)
+        title_text.draw(window)
 
-        text2_bar2 = Text(Point(310,460 -(bar2_count*15)),str(bar2_count))
-        text2_bar2.setTextColor("blue")
-        text2_bar2.setStyle("bold")
-        text2_bar2.setFace("arial")
-        text2_bar2.setSize(18)
-        text2_bar2.draw(window)
-
-        #Bar3 customize
-        bar3 = Rectangle(Point(400,475),Point(520,475 - (bar3_count*15)))
-        bar3.setFill(color_rgb(255,0,0))
-        bar3.draw(window)
-
-        text1_bar3 = Text(Point(460,490),names_of_bars[2])
-        text1_bar3.setTextColor("blue")
-        text1_bar3.setStyle("bold")
-        text1_bar3.setFace("arial")
-        text1_bar3.setSize(18)
-        text1_bar3.draw(window)
-
-        text2_bar3 = Text(Point(460,460-(bar3_count*15)),str(bar3_count))
-        text2_bar3.setTextColor("blue")
-        text2_bar3.setStyle("bold")
-        text2_bar3.setFace("arial")
-        text2_bar3.setSize(18)
-        text2_bar3.draw(window)
-
-        #Bar4 customize
-        bar4 = Rectangle(Point(550,475),Point(670,475 -(bar4_count*15)))
-        bar4.setFill(color_rgb(96,96,96))
-        bar4.draw(window)
-
-        text1_bar4 = Text(Point(610,490),names_of_bars[3])
-        text1_bar4.setTextColor("blue")
-        text1_bar4.setStyle("bold")
-        text1_bar4.setFace("arial")
-        text1_bar4.setSize(18)
-        text1_bar4.draw(window)
-
-        text2_bar4 = Text(Point(610,460-(bar4_count*15)),str(bar4_count))
-        text2_bar4.setTextColor("blue")
-        text2_bar4.setStyle("bold")
-        text2_bar4.setFace("arial")
-        text2_bar4.setSize(18)
-        text2_bar4.draw(window)
-
-        #title customize
-        total_text = Text(Point(240,50),"Histrogram Results")
-        total_text.setTextColor("black")
-        total_text.setStyle("bold")
-        total_text.setFace("arial")
-        total_text.setSize(25)
-        total_text.draw(window)
-
-        #total text customize
+        #create and customize the total text
         total_text = Text(Point(230,540),str(total_count) +" outcomes in total.")
         total_text.setTextColor("black")
         total_text.setStyle("bold")
@@ -230,7 +183,7 @@ def show_histrogram(bar1_count:int,bar2_count:int,bar3_count:int,bar4_count:int,
         total_text.setSize(22)
         total_text.draw(window)
 
-        #line customize
+        #create and customize the line
         aline = Line(Point(70,475),Point(700,475))
         aline.setFill("black")
         aline.draw(window)
@@ -258,8 +211,3 @@ while check:
     print(pro_outcome)
     data_list.append([pro_outcome,pass_value,defer_value,fail_value])
     check = loop_checker(data_list)
-
-
-
-
-    
