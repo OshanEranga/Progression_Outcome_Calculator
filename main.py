@@ -1,7 +1,7 @@
 #Import the modules
 from graphics import *
 
-#Costom exeptions
+#Custom exeptions
 class OutOfRangeError(Exception):
     "Credits which was entered you have a Out of range."
     pass
@@ -73,7 +73,7 @@ def getting_inputs() ->int:
                 continue
             break
 
-        if pass_value + defer_value + fail_value > 120:
+        if pass_value + defer_value + fail_value != 120:
             print("Total incorrect.")
             continue
         break
