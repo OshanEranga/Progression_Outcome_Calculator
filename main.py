@@ -113,7 +113,6 @@ def progression_outcome_count(data_list:list) ->int:
                 pass
         return progress_count,trailer_count,retriever_count,excluded_count
 
-
 #Program loop checker
 def loop_checker(data:list) ->bool:
     print("\nWould you like to enter another set of data?")
@@ -211,3 +210,4 @@ while check:
     print(pro_outcome)
     data_list.append([pro_outcome,pass_value,defer_value,fail_value])
     check = loop_checker(data_list)
+
