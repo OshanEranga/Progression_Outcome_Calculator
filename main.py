@@ -21,7 +21,7 @@ def read_data() ->list:
             lines = file.readlines()
             if len(lines) > 0:
                 for line in lines:
-                    data.append([line.rstrip().split(',')[0].rstrip().split("-")[0], line.rstrip().split(',')[0].rstrip().split("-")[1], line.rstrip().split(',')[1], line.rstrip().split(',')[2]])
+                    data.append([line.rstrip().split(',')[0].split("-")[0], line.rstrip().split(',')[0].split("-")[1], line.rstrip().split(',')[1], line.rstrip().split(',')[2]])
                 return data
             else:
                 return data
@@ -79,7 +79,7 @@ def getting_inputs() ->int:
         break
     return pass_value,defer_value,fail_value
 
-#Getting progression outcome
+#Getting a progression outcome
 def progression_outcome(pass_value:int,defer_value:int,fail_value:int) ->str:
     if pass_value == 120:
         pro_out = "Progress"
@@ -91,7 +91,7 @@ def progression_outcome(pass_value:int,defer_value:int,fail_value:int) ->str:
         pro_out = "Exclude"
     return pro_out
 
-#Getting progression outcome count
+#Getting a progression outcome count
 def progression_outcome_count(data_list:list) ->int:
     progress_count = 0
     trailer_count = 0
@@ -130,7 +130,7 @@ def loop_checker(data:list) ->bool:
             print("Invalid input.Try again.")
             continue
 
-#Show histrogram 
+#Show the histrogram 
 def show_histrogram(bar1_count:int,bar2_count:int,bar3_count:int,bar4_count:int,names_of_bars:list):
     total_count = bar1_count + bar2_count + bar3_count + bar4_count
     each_count_list = [bar1_count,bar2_count,bar3_count,bar4_count]
@@ -195,7 +195,7 @@ def show_histrogram(bar1_count:int,bar2_count:int,bar3_count:int,bar4_count:int,
     finally:
         window.close()
 
-# Delete file contains
+# Delete the file contains
 def delete_data():
     with open("data.txt", "w") as file:
         pass
